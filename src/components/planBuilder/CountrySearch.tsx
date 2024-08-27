@@ -34,6 +34,7 @@ const CountrySearch: React.FC = () => {
 
   const selectOption = (country: CountrySearchResult) => {
     addItem({
+      uuid: crypto.randomUUID(),
       name: country.name.common,
     });
     setName("");
@@ -62,7 +63,7 @@ const CountrySearch: React.FC = () => {
                   {countries.map((country, index) => (
                     <li
                       key={index}
-                      className="p-3 hover:bg-gray-200 flex"
+                      className="p-3 hover:bg-gray-200 flex rounded-md"
                       onClick={() => selectOption(country)}
                     >
                       {country.name.common}

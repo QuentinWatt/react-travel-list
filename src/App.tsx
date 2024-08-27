@@ -2,7 +2,7 @@ import Footer from "./components/footer/Footer";
 import Itinerary from "./components/planBuilder/Itinerary";
 import Navigation from "./components/navigation/Navigation";
 import TravelListProvider from "./components/providers/TravelListProvider";
-import CountrySearch from "./components/planBuilder/CountrySearchResult";
+import CountrySearch from "./components/planBuilder/countrySearch";
 
 export default function App() {
   return (
@@ -11,8 +11,10 @@ export default function App() {
         <Navigation />
         <div className="my-6">
           <TravelListProvider>
-            <CountrySearch />
-            <Itinerary />
+            <div className="flex flex-col md:flex-row">
+              <CountrySearch />
+              <Itinerary />
+            </div>
           </TravelListProvider>
         </div>
       </div>

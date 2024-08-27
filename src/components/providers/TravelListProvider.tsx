@@ -6,12 +6,14 @@ interface ListContextType {
   list: TravelListItem[];
   setList: React.Dispatch<React.SetStateAction<TravelListItem[]>>;
   addItem: Function;
+  removeItem: Function;
 }
 
 const initialState: ListContextType = {
   list: [],
   setList: () => {},
   addItem: () => {},
+  removeItem: () => {},
 };
 
 export const TravelListContext = createContext(initialState);
@@ -29,8 +31,13 @@ const TravelListProvider: React.FC<TravelListProviderProps> = ({
     setList([...list, newItem]);
   };
 
+  const removeItem = (oldItem: TravelListItem) => {
+    const revisedList = list.filter((item) => item.uuid !== oldItem.uuid);
+    setList(revisedList);
+  };
+
   return (
-    <TravelListContext.Provider value={{ list, setList, addItem }}>
+    <TravelListContext.Provider value={{ list, setList, addItem, removeItem }}>
       {children}
     </TravelListContext.Provider>
   );
