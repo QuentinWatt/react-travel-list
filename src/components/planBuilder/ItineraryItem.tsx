@@ -18,7 +18,7 @@ const ItineraryItem: React.FC<Props> = ({ item, order }) => {
     >
       <span className="flex items-center">
         {order !== undefined && (
-          <span className="rounded-md min-w-8 p-1 bg-blue-300 font-bold text-xs flex items-center justify-center mr-3">
+          <span className="rounded-md min-w-8 p-1 bg-slate-700 text-white font-bold text-xs flex items-center justify-center mr-3">
             {order}
           </span>
         )}

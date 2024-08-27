@@ -1,16 +1,14 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Panel from "../utils/Panel";
 import { CountrySearchResult } from "../../models/CountrySearchResult";
 import DropdownOverlay from "../utils/DropdownOverlay";
-import { TravelListContext } from "../providers/TravelListProvider";
-import Button from "../../models/Button";
+import CountrySearchItem from "./CountrySearchItem";
 
 const CountrySearch: React.FC = () => {
   const [name, setName] = useState<string>("");
   const [countries, setCountries] = useState<CountrySearchResult[]>([]);
   const [error, setError] = useState<string>("");
-  const { addItem } = useContext(TravelListContext);
 
   useEffect(() => {
     const fetchOptions = async () => {
@@ -33,14 +31,6 @@ const CountrySearch: React.FC = () => {
     }
   }, [name]);
 
-  const selectOption = (country: CountrySearchResult) => {
-    setName("");
-    addItem({
-      uuid: crypto.randomUUID(),
-      name: country.name.common,
-    });
-  };
-
   return (
     <div className="container mx-auto px-3 mb-6">
       <Panel className="mb-3">
@@ -62,14 +52,11 @@ const CountrySearch: React.FC = () => {
               <DropdownOverlay>
                 <ul>
                   {countries.map((country, index) => (
-                    <li
+                    <CountrySearchItem
                       key={index}
-                      className="pl-3 pr-1 py-1 hover:bg-gray-200 flex rounded-md border mb-1 justify-between items-center hover:cursor-pointer"
-                      onClick={() => selectOption(country)}
-                    >
-                      {country.name.common}
-                      <Button onClick={() => selectOption(country)}>Add</Button>
-                    </li>
+                      country={country}
+                      onSelected={() => setName("")}
+                    />
                   ))}
                 </ul>
               </DropdownOverlay>
