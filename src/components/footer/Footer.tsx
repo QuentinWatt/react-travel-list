@@ -5,7 +5,7 @@ const Footer: React.FC = () => {
     <footer className="bg-gray-900 text-white py-6">
       <div className="container mx-auto">
         <div className="md:flex mb-3">
-          <div className="md:w-1/3 text-center">
+          <div className="md:w-1/3 text-center mb-3 md:mb-0">
             <h4 className="font-bold text-lg underline">Follow us</h4>
             <ul>
               <li>
@@ -20,7 +20,7 @@ const Footer: React.FC = () => {
             </ul>
           </div>
 
-          <div className="md:w-1/3 text-center">
+          <div className="md:w-1/3 text-center mb-3 md:mb-0">
             <h4 className="font-bold text-lg underline">Useful links</h4>
             <ul>
               <li>
@@ -32,7 +32,7 @@ const Footer: React.FC = () => {
             </ul>
           </div>
 
-          <div className="md:w-1/3 text-center">
+          <div className="md:w-1/3 text-center mb-3 md:mb-0">
             <h4 className="font-bold text-lg underline">Careers</h4>
             <ul>
               <li>
