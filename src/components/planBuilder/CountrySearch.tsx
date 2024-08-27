@@ -41,6 +41,7 @@ const CountrySearch: React.FC = () => {
             </label>
             <input
               id="search"
+              data-testid="search-input"
               type="text"
               onChange={(e) => setName(e.target.value)}
               value={name}
