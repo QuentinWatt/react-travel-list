@@ -6,7 +6,7 @@ const Footer: React.FC = () => {
       <div className="container mx-auto">
         <div className="md:flex mb-3">
           <div className="md:w-1/3 text-center">
-            <h4 className="font-bold text-lg">Follow us</h4>
+            <h4 className="font-bold text-lg underline">Follow us</h4>
             <ul>
               <li>
                 <a href="#">Facebook</a>
@@ -21,7 +21,7 @@ const Footer: React.FC = () => {
           </div>
 
           <div className="md:w-1/3 text-center">
-            <h4 className="font-bold text-lg">Useful links</h4>
+            <h4 className="font-bold text-lg underline">Useful links</h4>
             <ul>
               <li>
                 <a href="#">Privacy Policy</a>
@@ -33,7 +33,7 @@ const Footer: React.FC = () => {
           </div>
 
           <div className="md:w-1/3 text-center">
-            <h4 className="font-bold text-lg">Careers</h4>
+            <h4 className="font-bold text-lg underline">Careers</h4>
             <ul>
               <li>
                 <a href="#">Vacancies</a>
