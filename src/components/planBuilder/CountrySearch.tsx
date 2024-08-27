@@ -1,9 +1,10 @@
 import React, { useContext, useEffect, useState } from "react";
 import axios from "axios";
 import Panel from "../utils/Panel";
-import { CountrySearchResult } from "../../models/CountrySearchOption";
+import { CountrySearchResult } from "../../models/CountrySearchResult";
 import DropdownOverlay from "../utils/DropdownOverlay";
 import { TravelListContext } from "../providers/TravelListProvider";
+import Button from "../../models/Button";
 
 const CountrySearch: React.FC = () => {
   const [name, setName] = useState<string>("");
@@ -33,11 +34,11 @@ const CountrySearch: React.FC = () => {
   }, [name]);
 
   const selectOption = (country: CountrySearchResult) => {
+    setName("");
     addItem({
       uuid: crypto.randomUUID(),
       name: country.name.common,
     });
-    setName("");
   };
 
   return (
@@ -63,10 +64,11 @@ const CountrySearch: React.FC = () => {
                   {countries.map((country, index) => (
                     <li
                       key={index}
-                      className="p-3 hover:bg-gray-200 flex rounded-md"
+                      className="pl-3 pr-1 py-1 hover:bg-gray-200 flex rounded-md border mb-1 justify-between items-center hover:cursor-pointer"
                       onClick={() => selectOption(country)}
                     >
                       {country.name.common}
+                      <Button onClick={() => selectOption(country)}>Add</Button>
                     </li>
                   ))}
                 </ul>

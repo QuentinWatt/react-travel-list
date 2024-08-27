@@ -9,10 +9,10 @@ const Itinerary: React.FC = () => {
   return (
     <div className="container mx-auto px-3">
       <Panel>
-        <h2 className="font-bold">Your Travel Itinerary</h2>
+        <h2 className="font-bold mb-3">Your Travel Itinerary</h2>
         <ul>
-          {list.map((item) => (
-            <ItineraryItem key={item.uuid} item={item} />
+          {list.map((item, index) => (
+            <ItineraryItem key={item.uuid} item={item} order={index + 1} />
           ))}
         </ul>
       </Panel>

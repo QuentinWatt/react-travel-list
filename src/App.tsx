@@ -9,7 +9,7 @@ export default function App() {
     <div className="min-h-screen bg-gray-300 flex flex-col justify-between">
       <div>
         <Navigation />
-        <div className="my-6">
+        <div className="my-6 container mx-auto">
           <TravelListProvider>
             <div className="flex flex-col md:flex-row">
               <CountrySearch />
