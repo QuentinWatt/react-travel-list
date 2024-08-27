@@ -1,0 +1,33 @@
+import React, { ReactNode, useState } from "react";
+import { createContext } from "react";
+import { TravelListItem } from "../../models/TravelListItem";
+
+interface ListContextType {
+  list: TravelListItem[];
+  setList: React.Dispatch<React.SetStateAction<TravelListItem[]>>;
+}
+
+const initialState: ListContextType = {
+  list: [],
+  setList: () => {},
+};
+
+export const TravelListContext = createContext(initialState);
+
+interface TravelListProviderProps {
+  children: ReactNode;
+}
+
+const TravelListProvider: React.FC<TravelListProviderProps> = ({
+  children,
+}) => {
+  const [list, setList] = useState<TravelListItem[]>([]);
+
+  return (
+    <TravelListContext.Provider value={{ list, setList }}>
+      {children}
+    </TravelListContext.Provider>
+  );
+};
+
+export default TravelListProvider;
