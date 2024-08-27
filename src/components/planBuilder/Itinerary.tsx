@@ -10,8 +10,8 @@ const Itinerary: React.FC = () => {
       <Panel>
         <h2 className="font-bold">Your List</h2>
         <ul>
-          {list.map((item) => (
-            <li key={item.id}>{item.name}</li>
+          {list.map((item, index) => (
+            <li key={index}>{item.name}</li>
           ))}
         </ul>
       </Panel>

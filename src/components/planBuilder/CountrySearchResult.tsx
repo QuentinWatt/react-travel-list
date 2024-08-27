@@ -1,25 +1,27 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import axios from "axios";
 import Panel from "../utils/Panel";
 import { CountrySearchResult } from "../../models/CountrySearchOption";
+import DropdownOverlay from "../utils/DropdownOverlay";
+import { TravelListContext } from "../providers/TravelListProvider";
 
 const CountrySearch: React.FC = () => {
   const [name, setName] = useState<string>("");
   const [countries, setCountries] = useState<CountrySearchResult[]>([]);
   const [error, setError] = useState<string>("");
+  const { addItem } = useContext(TravelListContext);
 
   useEffect(() => {
     const fetchOptions = async () => {
       setError("");
       try {
         const response = await axios.get(
-          `https://restcountries.com/v3.1/name/${name}?fields=name`
+          `https://restcountries.com/v3.1/name/${name}`
         );
         setCountries(response.data);
       } catch (error) {
-        console.log(error);
         setCountries([]);
-        setError("There was an error");
+        setError("No results found");
       }
     };
 
@@ -29,6 +31,13 @@ const CountrySearch: React.FC = () => {
       setCountries([]);
     }
   }, [name]);
+
+  const selectOption = (country: CountrySearchResult) => {
+    addItem({
+      name: country.name.common,
+    });
+    setName("");
+  };
 
   return (
     <div className="container mx-auto px-3 mb-6">
@@ -46,18 +55,26 @@ const CountrySearch: React.FC = () => {
               className="border px-3 py-2 rounded bg-gray-200"
               placeholder="Search by country name"
             />
+
+            {countries.length > 0 && (
+              <DropdownOverlay>
+                <ul>
+                  {countries.map((country, index) => (
+                    <li
+                      key={index}
+                      className="p-3 hover:bg-gray-200 flex"
+                      onClick={() => selectOption(country)}
+                    >
+                      {country.name.common}
+                    </li>
+                  ))}
+                </ul>
+              </DropdownOverlay>
+            )}
+
+            {error.length > 0 && <DropdownOverlay>{error}</DropdownOverlay>}
           </div>
         </form>
-
-        {countries.length > 0 && (
-          <ul>
-            {countries.map((country, index) => (
-              <li key={index}>{country.name.common}</li>
-            ))}
-          </ul>
-        )}
-
-        {error.length > 0 && <div>{error}</div>}
       </Panel>
     </div>
   );

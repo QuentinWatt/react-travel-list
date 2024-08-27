@@ -5,11 +5,13 @@ import { TravelListItem } from "../../models/TravelListItem";
 interface ListContextType {
   list: TravelListItem[];
   setList: React.Dispatch<React.SetStateAction<TravelListItem[]>>;
+  addItem: Function;
 }
 
 const initialState: ListContextType = {
   list: [],
   setList: () => {},
+  addItem: () => {},
 };
 
 export const TravelListContext = createContext(initialState);
@@ -23,8 +25,12 @@ const TravelListProvider: React.FC<TravelListProviderProps> = ({
 }) => {
   const [list, setList] = useState<TravelListItem[]>([]);
 
+  const addItem = (newItem: TravelListItem) => {
+    setList([...list, newItem]);
+  };
+
   return (
-    <TravelListContext.Provider value={{ list, setList }}>
+    <TravelListContext.Provider value={{ list, setList, addItem }}>
       {children}
     </TravelListContext.Provider>
   );
