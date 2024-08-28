@@ -1,11 +1,11 @@
 import React, { useContext } from "react";
 import { CountrySearchResult } from "../../models/CountrySearchResult";
 import { TravelListContext } from "../providers/TravelListProvider";
-import Button from "../../models/Button";
+import Button from "../utils/Button";
 
 interface Props {
   country: CountrySearchResult;
-  onSelected: Function;
+  onSelected?: Function;
 }
 
 const CountrySearchItem: React.FC<Props> = ({
@@ -25,10 +25,17 @@ const CountrySearchItem: React.FC<Props> = ({
   return (
     <li
       className="pl-3 pr-1 py-1 hover:bg-gray-200 flex rounded-md border mb-1 justify-between items-center hover:cursor-pointer"
-      onClick={() => selectOption(country)}
+      onClick={(e) => selectOption(country)}
     >
       {country.name.common}
-      <Button onClick={() => selectOption(country)}>Add</Button>
+      <Button
+        onClick={(e) => {
+          e.stopPropagation();
+          selectOption(country);
+        }}
+      >
+        Add
+      </Button>
     </li>
   );
 };

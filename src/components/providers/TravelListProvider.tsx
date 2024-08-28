@@ -9,7 +9,7 @@ interface ListContextType {
   removeItem: Function;
 }
 
-const initialState: ListContextType = {
+export const initialState: ListContextType = {
   list: [],
   setList: () => {},
   addItem: () => {},

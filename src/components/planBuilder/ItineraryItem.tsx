@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import { TravelListItem } from "../../models/TravelListItem";
 import { TravelListContext } from "../providers/TravelListProvider";
-import Button from "../../models/Button";
+import Button from "../utils/Button";
 
 interface Props {
   order?: number;
