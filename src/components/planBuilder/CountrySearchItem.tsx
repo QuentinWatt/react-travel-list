@@ -5,7 +5,7 @@ import Button from "../utils/Button";
 
 interface Props {
   country: CountrySearchResult;
-  onSelected?: Function;
+  onSelected?: () => void;
 }
 
 const CountrySearchItem: React.FC<Props> = ({
@@ -25,11 +25,11 @@ const CountrySearchItem: React.FC<Props> = ({
   return (
     <li
       className="pl-3 pr-1 py-1 hover:bg-gray-200 flex rounded-md border mb-1 justify-between items-center hover:cursor-pointer"
-      onClick={(e) => selectOption(country)}
+      onClick={() => selectOption(country)}
     >
       {country.name.common}
       <Button
-        onClick={(e) => {
+        onClick={(e: Event) => {
           e.stopPropagation();
           selectOption(country);
         }}

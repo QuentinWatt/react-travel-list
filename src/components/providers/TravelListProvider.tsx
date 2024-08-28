@@ -5,11 +5,11 @@ import { TravelListItem } from "../../models/TravelListItem";
 interface ListContextType {
   list: TravelListItem[];
   setList: React.Dispatch<React.SetStateAction<TravelListItem[]>>;
-  addItem: Function;
-  removeItem: Function;
+  addItem: (item: TravelListItem) => void;
+  removeItem: (item: TravelListItem) => void;
 }
 
-export const initialState: ListContextType = {
+const initialState: ListContextType = {
   list: [],
   setList: () => {},
   addItem: () => {},

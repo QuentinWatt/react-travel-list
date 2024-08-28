@@ -23,7 +23,6 @@ export default tseslint.config(
         'warn',
         { allowConstantExport: true },
       ],
-      "no-empty": [2, {"exceptions": "catch"}]
     },
   },
 )
