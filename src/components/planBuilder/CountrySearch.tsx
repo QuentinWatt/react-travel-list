@@ -18,7 +18,7 @@ const CountrySearch: React.FC = () => {
           `https://restcountries.com/v3.1/name/${name}`
         );
         setCountries(response.data);
-      } catch (error) {
+      } catch {
         setCountries([]);
         setError("No results found");
       }
