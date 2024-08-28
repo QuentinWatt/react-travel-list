@@ -1,5 +1,5 @@
 import { render, screen, fireEvent, waitFor } from "@testing-library/react";
-import CountrySearch from "./countrySearch";
+import CountrySearch from "./CountrySearch";
 import axios from "axios";
 
 vi.mock("axios");
