@@ -8,6 +8,8 @@ This application uses the an open [Countries API](https://restcountries.com/) to
 
 - React
 - Typescript (A superset of JavaScript)
-- Git
+- Git usage
 - Tailwind CSS
 - Axios for HTTP requests
+- React Test Library
+- Github actions for CI
