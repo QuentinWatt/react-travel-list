@@ -2,7 +2,7 @@ import Footer from "./components/footer/Footer";
 import Itinerary from "./components/planBuilder/Itinerary";
 import Navigation from "./components/navigation/Navigation";
 import TravelListProvider from "./components/providers/TravelListProvider";
-import CountrySearch from "./components/planBuilder/countrySearch";
+import CountrySearch from "./components/planBuilder/CountrySearch";
 
 export default function App() {
   return (
