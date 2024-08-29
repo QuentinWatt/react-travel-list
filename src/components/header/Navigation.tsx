@@ -13,6 +13,7 @@ const Navigation: React.FC = () => {
           <span className="absolute right-3 top-3">
             <CloseIcon onClick={closeMenu} />
           </span>
+
           <ul>
             <li>
               <Link to="/">Home</Link>
