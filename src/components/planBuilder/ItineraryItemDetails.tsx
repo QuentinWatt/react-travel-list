@@ -1,60 +1,40 @@
-import axios from "axios";
-import React, { useEffect, useState } from "react";
-import { TravelListItem } from "../../models/TravelListItem";
+import React from "react";
 import { CountrySearchResult } from "../../models/CountrySearchResult";
 
 interface Props {
-  item: TravelListItem;
+  country: CountrySearchResult | null;
 }
 
-const ItineraryItemDetails: React.FC<Props> = ({ item }) => {
-  const [country, setCountry] = useState<CountrySearchResult | null>(null);
-
-  useEffect(() => {
-    const fetchCountry = async () => {
-      try {
-        const response = await axios.get(
-          `https://restcountries.com/v3.1/name/${item.name}`
-        );
-        const { flags, currencies, capital } = response.data[0];
-        setCountry({
-          name: response.data[0].name.common,
-          flags,
-          currencies,
-          capital,
-        });
-      } catch {
-        setCountry(null);
-      }
-    };
-
-    fetchCountry();
-  }, [item]);
-
+const ItineraryItemDetails: React.FC<Props> = ({ country }) => {
   return (
-    <div className="pb-3">
+    <div
+      data-testid="itinerary-details-wrapper"
+      className="pb-3 border-t border-gray-400 mt-2"
+    >
       {country != null && (
         <div>
           <div>
-            <h3 className="font-bold mb-1">Capital:</h3>
+            <h3 className="font-bold">Capital:</h3>
             <p className="flex">{country.capital?.join(", ")}</p>
           </div>
 
           {country.currencies && (
             <div className="mt-2">
-              <h3 className="font-bold mb-1">Currency:</h3>
+              <h3 className="font-bold">Currency:</h3>
               {Object.values(country.currencies).map((currency) => (
-                <span>
+                <div key={currency?.symbol}>
                   {currency?.symbol} {currency?.name}
-                </span>
+                </div>
               ))}
             </div>
           )}
 
-          <div className="w-24 mt-2">
-            <h3 className="font-bold mb-1">Flag:</h3>
-            <img src={`${country.flags?.png}`} alt={country.flags?.alt} />
-          </div>
+          {country.flags && (
+            <div className="w-24 mt-2">
+              <h3 className="font-bold">Flag:</h3>
+              <img src={`${country.flags?.png}`} alt={country.flags?.alt} />
+            </div>
+          )}
         </div>
       )}
     </div>
