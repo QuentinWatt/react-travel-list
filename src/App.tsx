@@ -1,22 +1,19 @@
 import Footer from "./components/footer/Footer";
-import Itinerary from "./components/planBuilder/Itinerary";
-import Navigation from "./components/navigation/Navigation";
-import TravelListProvider from "./components/providers/TravelListProvider";
-import CountrySearch from "./components/planBuilder/CountrySearch";
+import Header from "./components/header/Header";
+import MenuProvider from "./components/providers/MenuProvider";
+import Navigation from "./components/header/Navigation";
+import { Outlet } from "react-router-dom";
 
 export default function App() {
   return (
     <div className="min-h-screen bg-gray-300 flex flex-col justify-between">
       <div>
-        <Navigation />
-        <div className="my-6 container mx-auto">
-          <TravelListProvider>
-            <div className="flex flex-col md:flex-row">
-              <CountrySearch />
-              <Itinerary />
-            </div>
-          </TravelListProvider>
-        </div>
+        <MenuProvider>
+          <Header />
+          <Navigation />
+        </MenuProvider>
+
+        <Outlet />
       </div>
       <Footer />
     </div>
