@@ -2,6 +2,7 @@
 /** base imports here **/
 
 @import "tailwindcss/components";
+@import "../css/Navigation.css";
 /** component imports here **/
 
 @import "tailwindcss/utilities";

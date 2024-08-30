@@ -8,21 +8,18 @@ const Navigation: React.FC = () => {
 
   return (
     <>
-      {isOpen ? (
-        <div className="absolute top-0 right-0 h-screen bg-slate-900 py-10 px-5 text-white min-w-64 shadow-lg">
-          <span className="absolute right-3 top-3">
-            <CloseIcon onClick={closeMenu} />
-          </span>
+      {isOpen && <div className="nav-overlay" onClick={closeMenu}></div>}
+      <div className={`navigation ${isOpen ? "open" : ""}`}>
+        <span className="absolute right-3 top-3">
+          <CloseIcon onClick={closeMenu} />
+        </span>
 
-          <ul>
-            <li>
-              <Link to="/">Home</Link>
-            </li>
-          </ul>
-        </div>
-      ) : (
-        <></>
-      )}
+        <ul>
+          <li>
+            <Link to="/">Home</Link>
+          </li>
+        </ul>
+      </div>
     </>
   );
 };

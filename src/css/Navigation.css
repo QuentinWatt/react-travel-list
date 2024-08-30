@@ -1,0 +1,14 @@
+.navigation {
+  @apply absolute top-0 right-0 h-screen bg-slate-800 py-10 px-5 text-white min-w-64 border-l border-gray-600 z-50;
+  transform: translateX(+100%);
+  transition: all 300ms;
+}
+
+.navigation.open {
+  transform: translateX(0);
+}
+
+.nav-overlay {
+  @apply bg-black opacity-60 w-full h-screen absolute z-30 top-0 left-0;
+  transition: all 300ms;
+}
